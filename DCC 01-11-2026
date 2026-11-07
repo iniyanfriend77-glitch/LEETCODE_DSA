@@ -1,0 +1,41 @@
+// 453. Minimum Moves to Equal Array Elements (MEDIUM) (Array Math)
+
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int minm=INT_MAX;
+        for(int x:nums)
+        minm=min(minm,x);
+        if(minm==INT_MAX)
+        return minm;
+        int tot=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]!=minm)
+            tot+=nums[i]-minm;
+        }
+        return tot;
+        
+    }
+};
+
+
+// SIMPLE MATH AND A LITTLE OBSERVATION ALL IT TAKES :) 
+
+// BUSY THROUGH OTHER THINGS I CANT GET IT BUT ONCE THE HINT I SAW STRIKED I FELT GUILT THERE :))
+
+// APPROACH //
+
+/*
+
+INITIAL : we can increase n-1 elements by 1 and making all equal.... So the problem here is what's the target ? increasing them may causes alternating max values instead of fixed one so it feels difficlut to track the target that each element should be
+
+OBSERVATION : increasing n-1 elements means decreasing the left element by 1.... so instead of tracking n-1 we shall decrease the 1's here ...so the approach is to make all elements equal by decreasing atmost 1 element by 1 ....
+
+APPROACH  : The most feasible way is to make all eleemnt equal to lowest value :
+1 . simulate find the min 
+2 . again simulate total_contribution+= nums[i] - min (no of min moves for each element);
+3 .  return the final value 
+
+the simpler way here is sum - min*len ;
+*/
