@@ -1,2 +1,2 @@
 # LEETCODE_DSA
-Documentation of my leetcode pattern based journey !!!!!!!!
+DCC LEETCODE MISTAKES,SOLUTION AND APPROACH :) 
