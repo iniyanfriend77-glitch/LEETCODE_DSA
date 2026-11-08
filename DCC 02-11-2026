@@ -1,0 +1,39 @@
+// 462. Minimum Moves to Equal Array Elements II (Math,Sort)(mid)
+
+
+class Solution {
+public:
+    int minMoves2(vector<int>& nums) {
+        long long minm=LLONG_MAX;
+        sort(nums.begin(),nums.end());
+        long long n=nums.size(),total=0;
+        for(int i=0;i<nums.size();i++)
+        total+=nums[i];
+        long long x=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            total-=nums[i];
+            long long need = (total - (n-i-1)*nums[i])+(1LL*i*nums[i]-x);
+            minm=min(minm,need);
+          //  total+=nums[i];
+            x+=nums[i];
+        }
+        return (int)minm;
+    }
+};
+
+
+// APPROACH : MATH GREEDY SORT
+
+/*
+UNDERSTANDING : making all element equal to any element (making them equal to a single elemnt is more feasible as it reduces the steps of that element)
+
+PROBLEM : yep for each element its smaller elements are to be increased and bigger are to be increased
+
+INTUITION : Sort the number track prefix sums from (0,i-1) th index and (i+1,n-1) for each i index 
+
+SIMULATION : smaller value sums are on leftsum , and bigger value cumulative sums of rightsum
+We need them to increase and decrease them to make equal to current one :)
+
+MATH : X*len - left ( how much each element of left lacking to be current X) + right - x*len (how much right have in excess to be currrent X) take the min off all the array elements 
+*/
